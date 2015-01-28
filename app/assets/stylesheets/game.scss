@@ -1,0 +1,29 @@
+// Place all the styles related to the game controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#cards {
+  margin: 0 auto;
+  padding: 5px;
+  width: 560px;
+}
+
+#cards div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  float: left;
+  margin: 5px;
+  border-radius: 5px;
+  display: table;
+}
+
+.hidden_card {
+  background-color: #AAF2FF;
+  color: #AAF2FF;
+}
+
+.visible_card {
+  color: black;
+  background-color: #fff;
+}
