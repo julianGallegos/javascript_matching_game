@@ -60,9 +60,11 @@ View.prototype.resetViewScore = function(){
 
 
 // trying to have all the images from Game.prototype.images render onto the DOM when game is initialized
+// it works when i manually do it on dev tools
 View.prototype.addCardImagesToView = function(images){
+	console.log(images)
 	$('.hidden_card').each(function renderImagesToView(index, element){
-		console.log($(element).text(images[index]))
+		$(element).text(images[index])
 	})
 }
 
@@ -74,7 +76,8 @@ function Controller(view, model){
 }
 
 Controller.prototype.startGame = function(images){
-	this.view.addCardImagesToView(this.model.cardHolder)
+	this.model.addImagesToGame();
+	this.view.addCardImagesToView(this.model.cardHolder);
 }
 
 Controller.prototype.turnOverCard = function(){
