@@ -3,6 +3,7 @@
 
 function Game(){
 	this.cardHolder = [];
+	this.currentCards = []
 	this.remaining_cards = 20;
 }
 
@@ -19,7 +20,6 @@ Game.prototype.images = [
 	"Rarity",
 	"Apple Jack",	
 	"Apple Jack",
-	"Apple Jack",	
 	"Apple Bloom",
 	"Apple Bloom",
 	"Princess Celestia",
@@ -37,6 +37,16 @@ Game.prototype.addImagesToGame = function(){
 	console.log(this.cardHolder)
 }
 
+Game.prototype.checkCardValue = function(){
+
+}
+
+Game.prototype.currentCards = function(){
+	//will take two cards in when they are clicked and them push them into the array
+	// if they are the same then there is a match
+	// else nothing will happen and the cards will flip back over
+}
+
 Game.prototype.shuffleImages = function(){
 
 }
@@ -51,7 +61,11 @@ function View(){
 
 
 View.prototype.checkCard = function(){
-	console.log("flipping this card")
+	$(document).click(function(event){
+		var text = $(event.target).text();
+		console.log(text)
+	})
+
 }
 
 View.prototype.resetViewScore = function(){
@@ -64,7 +78,8 @@ View.prototype.resetViewScore = function(){
 View.prototype.addCardImagesToView = function(images){
 	console.log(images)
 	$('.hidden_card').each(function renderImagesToView(index, element){
-		$(element).text(images[index])
+		$(element).attr("id", images[index])
+		$(element).append(images[index])
 	})
 }
 
@@ -82,6 +97,7 @@ Controller.prototype.startGame = function(images){
 
 Controller.prototype.turnOverCard = function(){
 	this.view.checkCard();
+	//this will also put the cards into the currentCards array in the model and then compare them to each other
 }
 
 Controller.prototype.resetGame = function(){
