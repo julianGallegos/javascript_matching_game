@@ -47,6 +47,10 @@ Game.prototype.currentCards = function(){
 	// else nothing will happen and the cards will flip back over
 }
 
+Game.prototype.addToCurrentCards = function(){
+	//push selected cards into currentCards array
+}
+
 Game.prototype.shuffleImages = function(){
 
 }
@@ -60,12 +64,18 @@ function View(){
 
 
 
-View.prototype.checkCard = function(){
-	$(document).click(function(event){
-		var text = $(event.target).text();
-		console.log(text)
-	})
+View.prototype.getCard = function(){
+  return $("#cards div");
+}
 
+View.prototype.checkCardClass = function(){
+	console.log($(this.getCard()))
+  // return $(this.getCards()[card_index]).find("i").attr("class");
+}
+
+View.prototype.flipCardAnimation = function(){
+	//user JQUERY to remove the hidden_card class on the selected car
+	// set a timer so then it goes back to hidden_card class
 }
 
 View.prototype.resetViewScore = function(){
@@ -96,7 +106,7 @@ Controller.prototype.startGame = function(images){
 }
 
 Controller.prototype.turnOverCard = function(){
-	this.view.checkCard();
+	this.view.checkCardClass();
 	//this will also put the cards into the currentCards array in the model and then compare them to each other
 }
 
