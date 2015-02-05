@@ -40,11 +40,22 @@ Game.prototype.checkCardValue = function(){
 
 }
 
+Game.prototype.comparedSelectedCards = function(){
+	if (this.currentCards[0] === this.currentCards[1]){
+		console.log("it's a match")
+	} else {
+		console.log("try again")
+	}
+	this.currentCards = []
+}
 
 
 Game.prototype.addToCurrentCards = function(card){
 	console.log(card)
 	this.currentCards.push(card)
+	if (this.currentCards.length == 2){
+		this.comparedSelectedCards()
+	}
 }
 
 Game.prototype.shuffleImages = function(){
