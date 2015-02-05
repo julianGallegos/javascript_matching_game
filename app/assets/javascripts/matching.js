@@ -34,21 +34,17 @@ Game.prototype.addImagesToGame = function(){
 	for (var i = 0; i < this.images.length; i++){
 		this.cardHolder.push(this.images[i])
 	}
-	console.log(this.cardHolder)
 }
 
 Game.prototype.checkCardValue = function(){
 
 }
 
-Game.prototype.currentCards = function(){
-	//will take two cards in when they are clicked and them push them into the array
-	// if they are the same then there is a match
-	// else nothing will happen and the cards will flip back over
-}
 
-Game.prototype.addToCurrentCards = function(){
-	//push selected cards into currentCards array
+
+Game.prototype.addToCurrentCards = function(card){
+	console.log(card)
+	this.currentCards.push(card)
 }
 
 Game.prototype.shuffleImages = function(){
@@ -60,6 +56,7 @@ Game.prototype.shuffleImages = function(){
 function View(){
 	this.turnCards = ".hidden_card"
 	this.resetButton = ".resetButton"
+	this.foundIds = []
 }
 
 
@@ -68,9 +65,10 @@ View.prototype.getCard = function(){
   return $("#cards div");
 }
 
-View.prototype.checkCardClass = function(){
-	console.log($(this.getCard()))
-  // return $(this.getCards()[card_index]).find("i").attr("class");
+//this is adding a 2nd event listener to view
+View.prototype.checkCardId = function(){
+    			var idClicked = event.target.id
+    			return idClicked
 }
 
 View.prototype.flipCardAnimation = function(){
@@ -82,11 +80,7 @@ View.prototype.resetViewScore = function(){
 	console.log('reseting the score')
 }
 
-
-// trying to have all the images from Game.prototype.images render onto the DOM when game is initialized
-// it works when i manually do it on dev tools
 View.prototype.addCardImagesToView = function(images){
-	console.log(images)
 	$('.hidden_card').each(function renderImagesToView(index, element){
 		$(element).attr("id", images[index])
 		$(element).append(images[index])
@@ -106,8 +100,8 @@ Controller.prototype.startGame = function(images){
 }
 
 Controller.prototype.turnOverCard = function(){
-	this.view.checkCardClass();
-	//this will also put the cards into the currentCards array in the model and then compare them to each other
+	this.model.addToCurrentCards(this.view.checkCardId())
+	console.log(this.model.currentCards)
 }
 
 Controller.prototype.resetGame = function(){
