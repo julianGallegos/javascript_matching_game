@@ -61,6 +61,10 @@ Game.prototype.incrementScore = function(){
 	console.log(this.score)
 }
 
+Game.prototype.resetScore = function(){
+	this.score = 0
+}
+
 Game.prototype.shuffleImages = function(){
 
 }
@@ -95,7 +99,7 @@ View.prototype.flipCardAnimation = function(){
 }
 
 View.prototype.resetViewScore = function(){
-	console.log('reseting the score')
+	$('#score').text(0)
 }
 
 View.prototype.addCardImagesToView = function(images){
@@ -125,6 +129,7 @@ Controller.prototype.turnOverCard = function(){
 }
 
 Controller.prototype.resetGame = function(){
+	this.model.resetScore();
 	this.view.resetViewScore();
 }
 
