@@ -5,6 +5,7 @@ function Game(){
 	this.cardHolder = [];
 	this.currentCards = []
 	this.remaining_cards = 20;
+	this.score = 0
 }
 
 Game.prototype.images = [
@@ -36,9 +37,6 @@ Game.prototype.addImagesToGame = function(){
 	}
 }
 
-Game.prototype.checkCardValue = function(){
-
-}
 
 Game.prototype.comparedSelectedCards = function(){
 	if (this.currentCards[0] === this.currentCards[1]){
@@ -56,6 +54,11 @@ Game.prototype.addToCurrentCards = function(card){
 	if (this.currentCards.length == 2){
 		this.comparedSelectedCards()
 	}
+}
+
+Game.prototype.incrementScore = function(){
+	this.score += 1
+	console.log(this.score)
 }
 
 Game.prototype.shuffleImages = function(){
@@ -80,6 +83,10 @@ View.prototype.getCard = function(){
 View.prototype.checkCardId = function(){
     			var idClicked = event.target.id
     			return idClicked
+}
+
+View.prototype.updateViewScore = function(currentScore){
+	$('#score').text(currentScore)
 }
 
 View.prototype.flipCardAnimation = function(){
@@ -112,6 +119,8 @@ Controller.prototype.startGame = function(images){
 
 Controller.prototype.turnOverCard = function(){
 	this.model.addToCurrentCards(this.view.checkCardId())
+	this.model.incrementScore()
+	this.view.updateViewScore(this.model.score)
 	console.log(this.model.currentCards)
 }
 
