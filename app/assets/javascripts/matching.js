@@ -112,7 +112,6 @@ View.prototype.getCard = function(){
   return $("#cards div");
 }
 
-//this is adding a 2nd event listener to view
 View.prototype.checkCardId = function(){
     			var idClicked = event.target.id
     			return idClicked
@@ -123,8 +122,7 @@ View.prototype.updateViewScore = function(currentScore){
 }
 
 View.prototype.flipCardAnimation = function(){
-	console.log(event.target.firstChild)
-	
+	$(event.target.firstChild).css("visibility", "visible")
 }
 
 View.prototype.resetViewScore = function(){
