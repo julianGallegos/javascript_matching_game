@@ -123,8 +123,8 @@ View.prototype.updateViewScore = function(currentScore){
 }
 
 View.prototype.flipCardAnimation = function(){
-	//user JQUERY to remove the hidden_card class on the selected car
-	// set a timer so then it goes back to hidden_card class
+	console.log(event.target.firstChild)
+	
 }
 
 View.prototype.resetViewScore = function(){
@@ -164,6 +164,7 @@ Controller.prototype.turnOverCard = function(){
 	this.model.addToCurrentCards(this.view.checkCardId())
 	this.model.incrementScore()
 	this.view.updateViewScore(this.model.score)
+	this.view.flipCardAnimation()
 	console.log(this.model.currentCards)
 }
 

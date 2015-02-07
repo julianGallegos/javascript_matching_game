@@ -20,7 +20,7 @@
 
 .hidden_card {
   background-color: #AAF2FF;
-  /*color: #AAF2FF;*/
+  color: #AAF2FF;
   text-align: center;
   
 
@@ -32,5 +32,6 @@
 }
 
 img {
-  height: 75%;
+  height: 70%;
+  visibility: hidden;
 }
