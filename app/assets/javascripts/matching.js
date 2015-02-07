@@ -143,6 +143,17 @@ View.prototype.addCardImagesToView = function(images){
 	})
 }
 
+View.prototype.shuffleCardDivs = function(){
+	$(function () {
+    var parent = $("#cards");
+    var divs = parent.children();
+    while (divs.length) {
+        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+    }
+});
+}
+
+
 
 //===============================Controller===========================
 
@@ -155,15 +166,16 @@ Controller.prototype.startGame = function(images){
 	this.model.addImagesClassesToGame();
 	this.model.addImagesToGame();
 	this.view.addCardClassToView(this.model.cardHolder);
-	this.view.addCardImagesToView(this.model.images)
+	this.view.addCardImagesToView(this.model.images);
+	this.view.shuffleCardDivs();
 }
 
 Controller.prototype.turnOverCard = function(){
-	this.model.addToCurrentCards(this.view.checkCardId())
-	this.model.incrementScore()
-	this.view.updateViewScore(this.model.score)
-	this.view.flipCardAnimation()
-	console.log(this.model.currentCards)
+	this.model.addToCurrentCards(this.view.checkCardId());
+	this.model.incrementScore();
+	this.view.updateViewScore(this.model.score);
+	this.view.flipCardAnimation();
+	console.log(this.model.currentCards);
 }
 
 Controller.prototype.resetGame = function(){
@@ -179,6 +191,6 @@ Controller.prototype.bindEventHandlers = function(){
 $(document).ready(function(){
 		var myGame = new Controller(new View(), new Game());
 		myGame.bindEventHandlers();
-		myGame.startGame()
+		myGame.startGame();
 })
 
