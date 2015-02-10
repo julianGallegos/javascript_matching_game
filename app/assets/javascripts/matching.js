@@ -69,9 +69,9 @@ Game.prototype.addImagesToGame = function(){
 
 Game.prototype.comparedSelectedCards = function(){
 	if (this.currentCards[0] === this.currentCards[1]){
-		console.log("it's a match")
+		return true
 	} else {
-		console.log("try again")
+		return false
 	}
 }
 
@@ -137,7 +137,7 @@ View.prototype.resetViewScore = function(){
 }
 
 View.prototype.hideImages = function(){
-	$('img').css("visibility", "hidden")
+	$('.ponies').css("visibility", "hidden")
 }
 
 View.prototype.addCardClassToView = function(images){
@@ -149,8 +149,15 @@ View.prototype.addCardClassToView = function(images){
 View.prototype.addCardImagesToView = function(images){
 	console.log(images)
 	$('.hidden_card').each(function renderImagesToView(index, element){
-		$(element).append('<img src=' +images[index] +'>')
+		$(element).append('<img class="ponies" src=' +images[index] +'>')
 	})
+}
+
+View.prototype.removeClassFromImages = function(matchedImages){
+	console.log('remove classes')
+	for (var i = 0; i < matchedImages.length; i++){
+		console.log(matchedImages)
+	 }
 }
 
 View.prototype.shuffleCardDivs = function(){
@@ -186,12 +193,28 @@ Controller.prototype.turnOverCard = function(){
 	this.model.incrementScore();
 	this.view.updateViewScore(this.model.score);
 	this.view.flipCardAnimation();
-	this.model.comparedSelectedCards();
+	console.log(this.model.currentCards)
 	if (this.model.currentCards.length > 2){
-		this.model.clearCurrentCards()
-		this.view.hideImages()
-		console.log(this.model.currentCards)
+		if (this.model.comparedSelectedCards() == true){
+			console.log("good job")
+			this.view.removeClassFromImages(this.model.currentCards)
+			this.model.clearCurrentCards()
+		} else {
+			console.log("nope nope nope")
+			this.view.hideImages();	
+			this.model.clearCurrentCards()
+		}
 	}
+	
+	
+
+
+
+	// if (this.model.currentCards.length > 2){
+	// 	this.model.clearCurrentCards()
+	// 	this.view.hideImages()
+	// 	console.log(this.model.currentCards)
+	// }
 }
 
 
@@ -200,6 +223,7 @@ Controller.prototype.resetGame = function(){
 	this.model.resetScore();
 	this.view.resetViewScore();
 	this.view.hideImages();
+	this.view.shuffleCardDivs();
 }
 
 Controller.prototype.bindEventHandlers = function(){	
