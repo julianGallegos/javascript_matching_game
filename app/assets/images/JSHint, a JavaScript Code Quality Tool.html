@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0018)http://jshint.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSHint, a JavaScript Code Quality Tool</title>
+
+    <meta charset="utf8">
+    <meta name="description" content="JSHint, a JavaScript Code Quality Tool">
+    <meta name="author" content="Anton Kovalyov">
+
+    <!--[if IE]>
+    <meta http-equiv="refresh" content="0; url=/about/">
+    <![endif]-->
+    <!-- gh-pages -->
+
+    
+    <link rel="stylesheet" href="http://jshint.com/res/index.min.css">
+    
+
+    <script type="text/javascript" async="" src="./JSHint, a JavaScript Code Quality Tool_files/ga.js"></script><script>
+      if (window.self !== window.top)
+        window.top.location.href = document.location.href;
+
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-126146-15"]);
+      _gaq.push(["_setDomainName", "jshint.com"]);
+      _gaq.push(["_trackPageview"]);
+    </script>
+
+    
+    <script src="./JSHint, a JavaScript Code Quality Tool_files/scripts.min.js"></script>
+    
+  </head>
+
+  <body onload="main()">
+    <div class="whiteboard">
+      <div class="toolbar">
+        <button data-type="toggle" data-target="configure,output">Configure</button>
+      </div>
+
+      <div id="configure">
+        <div>
+          <h4>Report</h4>
+          <button data-type="pref" id="complex" class="active">Cyclomatic complexity</button>
+          <button data-type="pref" id="unused" class="active">Unused variables</button>
+          <button data-type="pref" id="undef" class="active">Undefined variables</button>
+        </div>
+
+        <div>
+          <h4>Warn</h4>
+          <button data-type="pref" id="eqnull" class="active">About == null</button>
+          <button data-type="pref" id="debug" class="active">About debugging code</button>
+          <button data-type="pref" id="forin" class="active">About unsafe for..in</button>
+          <button data-type="pref" id="noarg" class="active">About arguments.caller and .callee</button>
+          <button data-type="pref" id="boss" class="active">About assignments if/for/...</button>
+          <button data-type="pref" id="loopfunc" class="active">About functions inside loops</button>
+          <button data-type="pref" id="evil" class="active">About eval</button>
+          <button data-type="pref" id="laxbreak" class="active">About unsafe line breaks</button>
+          <button data-type="pref" id="bitwise" class="active">About potential typos in logical operators</button>
+          <button data-type="pref" id="strict" class="">When code is not in strict mode</button>
+          <button data-type="pref" id="nonew" class="active">When new is used for side-effects</button>
+        </div>
+
+        <div>
+          <h4>Assume</h4>
+          <button data-type="pref" id="browser" class="active">Browser</button>
+          <button data-type="pref" id="node" class="">NodeJS</button>
+          <button data-type="pref" id="jquery" class="">jQuery</button>
+          <button data-type="pref" id="devel" class="active">Development (console, etc.)</button>
+          <button data-type="pref" id="esnext" class="">New JavaScript features (ES6)</button>
+          <button data-type="pref" id="moz" class="">Mozilla JavaScript extensions</button>
+          <button data-type="pref" id="es3" class="">Older environments (ES3)</button>
+        </div>
+      </div>
+
+      <div id="output">
+        <div data-type="metrics" class="report" style="display: block;">
+          <h4>Metrics</h4>
+          <div><p>There is only <b>one</b> function in this file.</p><p>It takes <b>no</b> arguments.</p><p>This function contains only <b>one</b> statement.</p><p>Cyclomatic complexity number for this function is <b>1</b>.</p></div>
+        </div>
+        <table data-type="errors" class="report"><tr><td class="header" colspan="2">Two warnings</td></tr><tr><td class="lineno">3</td><td>Missing semicolon.</td></tr><tr><td class="lineno">4</td><td>Expected '(end)' and instead saw '}'.</td></tr></table>
+        <table data-type="undef" class="report"><tr><td class="header" colspan="2">One undefined variable</td></tr><tr><td class="lineno">1</td><td>View</td></tr></table>
+        <table data-type="unused" class="report"></table>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <h1><img src="./JSHint, a JavaScript Code Quality Tool_files/jshint-dark.png" alt="JSHint"></h1>
+
+      <ul class="links">
+        <li><a href="http://jshint.com/about">About</a></li>
+        <li><a href="http://jshint.com/docs">Documentation</a></li>
+        <li><a href="http://jshint.com/install">Install</a></li>
+        <li><a href="http://jshint.com/contribute">Contribute</a></li>
+        <li><a href="http://jshint.com/blog">Blog</a></li>
+      </ul>
+    </div>
+
+    <script id="text-intro" type="text/jshint">
+      // Hello.
+      //
+      // This is JSHint, a tool that helps to detect errors and potential
+      // problems in your JavaScript code.
+      //
+      // To start, simply enter some JavaScript anywhere on this page. Your
+      // report will appear on the right side.
+      //
+      // Additionally, you can toggle specific options in the Configure
+      // menu.
+
+      function main() {
+        return 'Hello, World!';
+      }
+
+      main();
+    </script>
+
+    <script>
+      (function () {
+        var ga = document.createElement("script");
+        ga.type = "text/javascript";
+        ga.async = true;
+        ga.src = "//www.google-analytics.com/ga.js";
+
+        var st = document.getElementsByTagName("script")[0];
+        st.parentNode.insertBefore(ga, st);
+      })();
+    </script>
+  
+
+<div class="CodeMirror cm-s-default CodeMirror-focused"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 30px; left: 106.221870422363px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none; font-size: 4px;"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 35px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="min-width: 413.381195068359px; margin-left: 35px; min-height: 86px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre style="text-align: left;"><span>x</span></pre></div><div style="position: relative; z-index: 1;"><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 26px; width: 67.2218704223633px; height: 13px;"></div></div><div class="CodeMirror-code"><div style="position: relative;"><div style="position: absolute; left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 12px;">1</div></div><pre><span class="cm-variable">View</span>.<span class="cm-property">prototype</span>.<span class="cm-property">hideAfterNoMatch</span> = <span class="cm-variable">setTimeout</span>(<span class="cm-keyword">function</span>(){</pre></div><div style="position: relative;"><div style="position: absolute; left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 12px;">2</div></div><pre><span class="cm-tab">  </span><span class="cm-keyword">this</span>.<span class="cm-property">hideImages</span>();</pre></div><div style="position: relative;"><div style="position: absolute; left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 12px;">3</div></div><pre><span class="cm-tab">  </span>}, <span class="cm-number">1000</span>)</pre></div><div style="position: relative;"><div style="position: absolute; left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 12px;">4</div></div><pre>}</pre></div><div style="position: relative;"><div style="position: absolute; left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 12px;">5</div></div><pre>}</pre></div><div style="position: relative;"><div style="position: absolute; left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 12px;">6</div></div><pre>&nbsp;</pre></div></div><div class="CodeMirror-cursor" style="left: 4px; top: 39px; height: 13px; display: none;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 86px;"></div><div class="CodeMirror-gutters" style="height: 86px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 20px;"></div></div></div></div></body></html>

@@ -69,9 +69,9 @@ Game.prototype.addImagesToGame = function(){
 
 Game.prototype.comparedSelectedCards = function(){
 	if (this.currentCards[0] === this.currentCards[1]){
-		return true
+		console.log("it's a match")
 	} else {
-		return false
+		console.log("try again")
 	}
 }
 
@@ -83,9 +83,9 @@ Game.prototype.clearCurrentCards = function(){
 Game.prototype.addToCurrentCards = function(card){
 	console.log(card)
 	this.currentCards.push(card)
-	if (this.currentCards.length == 2){
-		this.comparedSelectedCards()
-	}
+	// if (this.currentCards.length == 2){
+	// 	this.comparedSelectedCards()
+	// }
 }
 
 Game.prototype.incrementScore = function(){
@@ -140,8 +140,6 @@ View.prototype.hideImages = function(){
 	$('img').css("visibility", "hidden")
 }
 
-
-
 View.prototype.addCardClassToView = function(images){
 	$('.hidden_card').each(function renderClassesToView(index, element){
 		$(element).attr("id", images[index])
@@ -188,12 +186,12 @@ Controller.prototype.turnOverCard = function(){
 	this.model.incrementScore();
 	this.view.updateViewScore(this.model.score);
 	this.view.flipCardAnimation();
-	console.log(this.model.currentCards)
-		if (this.model.currentCards.length > 2){
-			console.log("flipping back over")
-			this.view.flipCardBackOver();
-			this.model.clearCurrentCards();
-		}
+	this.model.comparedSelectedCards();
+	if (this.model.currentCards.length > 2){
+		this.model.clearCurrentCards()
+		this.view.hideImages()
+		console.log(this.model.currentCards)
+	}
 }
 
 
