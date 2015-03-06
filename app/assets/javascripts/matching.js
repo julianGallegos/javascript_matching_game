@@ -106,7 +106,6 @@ Game.prototype.shuffleImages = function(){
 function View(){
 	this.turnCards = ".hidden_card"
 	this.resetButton = ".resetButton"
-	this.foundIds = []
 }
 
 
@@ -119,6 +118,9 @@ View.prototype.checkCardId = function(){
     			var idClicked = event.target.id
     			return idClicked
 }
+
+
+
 
 View.prototype.updateViewScore = function(currentScore){
 	$('#score').text(currentScore)
@@ -142,7 +144,7 @@ View.prototype.hideImages = function(){
 
 View.prototype.addCardClassToView = function(images){
 	$('.hidden_card').each(function renderClassesToView(index, element){
-		$(element).attr("id", images[index])
+		$(element).attr("class", images[index] + " hidden_card")
 	})
 }
 
@@ -153,10 +155,16 @@ View.prototype.addCardImagesToView = function(images){
 	})
 }
 
+
+
 View.prototype.removeClassFromImages = function(matchedImages){
-	console.log('remove classes')
-	for (var i = 0; i < matchedImages.length; i++){
-		console.log(matchedImages)
+	for (var i = 0; i < 2; i++){
+		$(('#').concat(matchedImages[i])).children().removeClass('ponies')
+		//since i have the array of id's that were matched, im trying to use jquery to iterate through the array and then remove the class from the found id's
+
+		// the code will look something like this
+
+		//$('#Twilight_Sparkle').children().removeClass('ponies')
 	 }
 }
 
@@ -194,27 +202,25 @@ Controller.prototype.turnOverCard = function(){
 	this.view.updateViewScore(this.model.score);
 	this.view.flipCardAnimation();
 	console.log(this.model.currentCards)
-	if (this.model.currentCards.length > 2){
-		if (this.model.comparedSelectedCards() == true){
-			console.log("good job")
-			this.view.removeClassFromImages(this.model.currentCards)
-			this.model.clearCurrentCards()
-		} else {
-			console.log("nope nope nope")
-			this.view.hideImages();	
-			this.model.clearCurrentCards()
-		}
-	}
-	
-	
-
-
-
 	// if (this.model.currentCards.length > 2){
-	// 	this.model.clearCurrentCards()
-	// 	this.view.hideImages()
-	// 	console.log(this.model.currentCards)
+	// 	if (this.model.comparedSelectedCards() == true){
+	// 		this.view.removeClassFromImages(this.model.currentCards)
+	// 		this.model.clearCurrentCards()
+	// 	} else {
+	// 		this.view.hideImages();	
+	// 		this.model.clearCurrentCards()
+	// 	}
 	// }
+	
+	
+
+
+
+	if (this.model.currentCards.length > 2){
+		this.model.clearCurrentCards()
+		this.view.hideImages()
+		console.log(this.model.currentCards)
+	}
 }
 
 
