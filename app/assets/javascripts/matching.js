@@ -67,13 +67,6 @@ Game.prototype.addImagesToGame = function(){
 	}
 }
 
-Game.prototype.comparedSelectedCards = function(){
-	if (this.currentCards[0] === this.currentCards[1]){
-		return true
-	} else {
-		return false
-	}
-}
 
 Game.prototype.clearCurrentCards = function(){
 	this.currentCards = []
@@ -85,6 +78,7 @@ Game.prototype.addToCurrentCards = function(card){
 	this.currentCards.push(card)
 	// if (this.currentCards.length == 2){
 	// 	this.comparedSelectedCards()
+	// 	this.clearCurrentCards()
 	// }
 }
 
@@ -114,9 +108,9 @@ View.prototype.getCard = function(){
   return $("#cards div");
 }
 
-View.prototype.checkCardId = function(){
-    			var idClicked = event.target.id
-    			return idClicked
+View.prototype.checkCardName = function(){
+    			var cardClicked = event.target.className
+    			return cardClicked
 }
 
 
@@ -158,14 +152,15 @@ View.prototype.addCardImagesToView = function(images){
 
 
 View.prototype.removeClassFromImages = function(matchedImages){
-	for (var i = 0; i < 2; i++){
-		$(('#').concat(matchedImages[i])).children().removeClass('ponies')
+	console.log('taking the matches off the view')
+	// for (var i = 0; i < 2; i++){
+	// 	$(('#').concat(matchedImages[i])).children().removeClass('ponies')
 		//since i have the array of id's that were matched, im trying to use jquery to iterate through the array and then remove the class from the found id's
 
 		// the code will look something like this
 
 		//$('#Twilight_Sparkle').children().removeClass('ponies')
-	 }
+	 // }
 }
 
 View.prototype.shuffleCardDivs = function(){
@@ -196,17 +191,46 @@ Controller.prototype.startGame = function(images){
 }
 
 
+Controller.prototype.comparedSelectedCards = function(){
+	if (this.model.currentCards[0] === this.model.currentCards[1]){
+		console.log("it's a match")
+		this.view.removeClassFromImages(this.model.currentCards)
+		return true
+	} else {
+		console.log('try again')
+		return false
+	}
+}
+
+Controller.prototype.flipCardBackOver = function(){
+	if (this.model.currentCards.length == 2){
+
+		console.log("flipping cards back over");
+		this.view.hideImages();
+		this.model.clearCurrentCards()
+		// there should be some kind of timer here so the card turns over for a little bit
+	}
+}
+
 Controller.prototype.turnOverCard = function(){
-	this.model.addToCurrentCards(this.view.checkCardId());
+	this.view.checkCardName()
+	this.model.addToCurrentCards(this.view.checkCardName());
 	this.model.incrementScore();
 	this.view.updateViewScore(this.model.score);
 	this.view.flipCardAnimation();
 	console.log(this.model.currentCards)
+	this.comparedSelectedCards()
+	this.flipCardBackOver();
+
+// Controller.prototype.compareCards = function(){
+// 	if (this.model.currentCards)
+// }
 	// if (this.model.currentCards.length > 2){
-	// 	if (this.model.comparedSelectedCards() == true){
-	// 		this.view.removeClassFromImages(this.model.currentCards)
-	// 		this.model.clearCurrentCards()
-	// 	} else {
+		// if (this.model.comparedSelectedCards() == true){
+		// 	this.view.removeClassFromImages(this.model.currentCards)
+		// 	this.model.clearCurrentCards()
+		// }
+		// } else {
 	// 		this.view.hideImages();	
 	// 		this.model.clearCurrentCards()
 	// 	}
@@ -216,11 +240,11 @@ Controller.prototype.turnOverCard = function(){
 
 
 
-	if (this.model.currentCards.length > 2){
-		this.model.clearCurrentCards()
-		this.view.hideImages()
-		console.log(this.model.currentCards)
-	}
+	// if (this.model.currentCards.length > 2){
+	// 	this.model.clearCurrentCards()
+	// 	this.view.hideImages()
+	// 	console.log(this.model.currentCards)
+	// }
 }
 
 
