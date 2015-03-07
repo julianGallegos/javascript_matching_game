@@ -136,6 +136,15 @@ View.prototype.hideImages = function(){
 	$('.ponies').css("visibility", "hidden")
 }
 
+View.prototype.flipUnMatchedCards = function(){
+	console.log("setting time to flip cards back over")
+		var viewScope = this
+		setTimeout(function () {
+			console.log("i'm the timer")
+			viewScope.hideImages();
+		}, 2500);
+}
+
 View.prototype.addCardClassToView = function(images){
 	$('.hidden_card').each(function renderClassesToView(index, element){
 		$(element).attr("class", images[index] + " hidden_card")
@@ -206,8 +215,9 @@ Controller.prototype.flipCardBackOver = function(){
 	if (this.model.currentCards.length == 2){
 
 		console.log("flipping cards back over");
-		this.view.hideImages();
-		this.model.clearCurrentCards()
+		//this.view.hideImages();
+		this.view.flipUnMatchedCards();
+		this.model.clearCurrentCards();
 		// there should be some kind of timer here so the card turns over for a little bit
 	}
 }
