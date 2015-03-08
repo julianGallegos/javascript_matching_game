@@ -76,10 +76,6 @@ Game.prototype.clearCurrentCards = function(){
 Game.prototype.addToCurrentCards = function(card){
 	console.log(card)
 	this.currentCards.push(card)
-	// if (this.currentCards.length == 2){
-	// 	this.comparedSelectedCards()
-	// 	this.clearCurrentCards()
-	// }
 }
 
 Game.prototype.incrementScore = function(){
@@ -114,8 +110,6 @@ View.prototype.checkCardName = function(){
 }
 
 
-
-
 View.prototype.updateViewScore = function(currentScore){
 	$('#score').text(currentScore)
 }
@@ -138,11 +132,12 @@ View.prototype.hideImages = function(){
 
 View.prototype.flipUnMatchedCards = function(){
 	console.log("setting time to flip cards back over")
+	// setting a variable for view scope for the timer
 		var viewScope = this
 		setTimeout(function () {
 			console.log("i'm the timer")
 			viewScope.hideImages();
-		}, 2500);
+		}, 1500);
 }
 
 View.prototype.addCardClassToView = function(images){
