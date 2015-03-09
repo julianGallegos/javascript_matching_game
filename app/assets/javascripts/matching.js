@@ -158,7 +158,6 @@ View.prototype.addCardImagesToView = function(images){
 View.prototype.removeClassFromImages = function(matchedImages){
 	console.log('taking the matches off the view')
 	console.log(matchedImages)
-	debugger
 	$("." + this.model.currentCards).children().removeClass('ponies')
 	// for (var i = 0; i < 2; i++){
 	// 	$(('#').concat(matchedImages[i])).children().removeClass('ponies')
