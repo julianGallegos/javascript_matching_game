@@ -105,7 +105,7 @@ View.prototype.getCard = function(){
 }
 
 View.prototype.checkCardName = function(){
-    			var cardClicked = event.target.className
+    			var cardClicked = event.target.className.split(" ")[0]
     			return cardClicked
 }
 
@@ -157,6 +157,9 @@ View.prototype.addCardImagesToView = function(images){
 
 View.prototype.removeClassFromImages = function(matchedImages){
 	console.log('taking the matches off the view')
+	console.log(matchedImages)
+	debugger
+	$("." + this.model.currentCards).children().removeClass('ponies')
 	// for (var i = 0; i < 2; i++){
 	// 	$(('#').concat(matchedImages[i])).children().removeClass('ponies')
 		//since i have the array of id's that were matched, im trying to use jquery to iterate through the array and then remove the class from the found id's
@@ -198,6 +201,7 @@ Controller.prototype.startGame = function(images){
 Controller.prototype.comparedSelectedCards = function(){
 	if (this.model.currentCards[0] === this.model.currentCards[1]){
 		console.log("it's a match")
+		debugger
 		this.view.removeClassFromImages(this.model.currentCards)
 		return true
 	} else {
